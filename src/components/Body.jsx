@@ -6,7 +6,7 @@ export default function Body() {
     <header>
     <div className="container">
       <a href="#">
-        <img src="imagens/CRONOS-logo-white.png" alt="Agência CRONOS" />
+        <img src={require("../imagens/CRONOS-logo-white.png")} alt="Agência CRONOS" />
       </a>
       <h1>Painel administrativo</h1>
     </div>
@@ -29,7 +29,7 @@ export default function Body() {
             <tbody>
               <tr>
                 <td>Desenvolvimento Web</td>
-                <td><img src="imagens/ilustra-web.png" className="img-fluid" /></td>
+                <td><img src={require("../imagens/ilustra-web.png")} className="img-fluid" /></td>
                 <td>Consequatur debitis ipsa numquam illum placeat quod deleniti.</td>
                 <td>
                   <button className="btn btn-secondary m-1">editar</button>
@@ -38,7 +38,7 @@ export default function Body() {
               </tr>
               <tr>
                 <td>Marketing Digital</td>
-                <td><img src="imagens/ilustra-marketing.png" className="img-fluid" /></td>
+                <td><img src={require("../imagens/ilustra-marketing.png")} className="img-fluid" /></td>
                 <td>Consequatur debitis ipsa numquam illum placeat quod deleniti.</td>
                 <td>
                   <button className="btn btn-secondary m-1">editar</button>
@@ -47,7 +47,7 @@ export default function Body() {
               </tr>
               <tr>
                 <td>Consultoria UX</td>
-                <td><img src="imagens/ilustra-ux.png" className="img-fluid" /></td>
+                <td><img src={require("../imagens/ilustra-ux.png")} className="img-fluid" /></td>
                 <td>Consequatur debitis ipsa numquam illum placeat quod deleniti.</td>
                 <td>
                   <button className="btn btn-secondary m-1">editar</button>
