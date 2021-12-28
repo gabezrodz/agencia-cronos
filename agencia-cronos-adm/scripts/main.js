@@ -1,4 +1,5 @@
 //objetos
+
 let servicos = [
   {
     nome: "Desenvolvimento Web",
@@ -27,24 +28,44 @@ function listarServico() {
 
   for (let i = 0; i < servicos.length; i++) {
     imprimeServico += `
-
+    
     <tr>
     <td>${servicos[i].nome}</td>
     <td><img src=${servicos[i].img} class="img-fluid" /></td>
     <td>${servicos[i].descricao}</td>
     <td>
-      <button class="btn btn-secondary m-1">editar</button>
-      <button class="btn btn-danger m-1">excluir</button>
+    <button class="btn btn-secondary m-1">editar</button>
+    <button class="btn btn-danger m-1">excluir</button>
     </td>
-  </tr>
-  `;
+    </tr>
+    `;
 
     // console.log(`Temos o serviço de ${servicos[i].nome}`)
   }
 
   let insereInforamacao = document.querySelector("tbody");
-
   insereInforamacao.innerHTML = imprimeServico;
 }
+
+// Criando os Serviços
+let btnAdicaoDeServico = document.querySelector('[data-serviço="adc-servico"]');
+
+const adicionarServico = function () {
+  let novoServicoCadastrado = document.getElementById("input-nome");
+  let novoServicoDescricao = document.getElementById("input-descricao");
+  let novoServicoId = document.getElementById("input-id");
+  let novoServicoImg = document.getElementById("input-img");
+
+  servicos.push({
+    servico: novoServicoCadastrado.value,
+    descricao: novoServicoDescricao.value,
+    id: novoServicoId.value,
+    img: novoServicoImg.value,
+  });
+
+  listarServico();
+};
+
+btnAdicaoDeServico.addEventListener("click", adicionarServico);
 
 listarServico();
