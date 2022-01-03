@@ -79,11 +79,22 @@ listarServico();
 function editarServico(id) {
  for (let i = 0; i < servicos.length; i++) {
    if (servicos[i].id == id) {
-     document.querySelector('[data-input="nome"]').value = servicos[i].nome
-     document.querySelector('[data-input="descricao"]').value = servicos[i].descricao
-     document.querySelector('[data-input="id"]').value = servicos[i].id
-     document.querySelector('[data-input="img"]').value = servicos[i].img
+     document.querySelector('[data-input-nome]').value = servicos[i].nome
+     document.querySelector('[data-input-descricao]').value = servicos[i].descricao
+     document.querySelector('[data-input-id]').value = servicos[i].id
+     document.querySelector('[data-input-img]').value = servicos[i].img
    }
  }
+}
+
+function salvarEdicao() {
+  let nome = document.querySelector('[data-input-nome]')
+  let descricao = document.querySelector('[data-input-descricao]')
+  let id = document.querySelector('[data-input-id]')
+  let img = document.querySelector('[data-input-img]')
+
+
+
+  
 }
 

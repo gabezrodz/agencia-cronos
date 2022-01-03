@@ -32,22 +32,20 @@
             <button class="btn btn-primary">Adicionar novo</button>
             <div class="novo-servico">
               <h6>Curso:</h6>
-              <input type="text" placeholder="Nome do curso" id="input-nome" data-input="nome"/>
+              <input type="text" placeholder="Nome do curso" id="input-nome" />
               <h6>Descrição:</h6>
               <input
                 type="text"
                 placeholder="Conteúdo, duração, etc"
                 id="input-descricao"
-                data-input="descricao"
               />
               <h6>ID:</h6>
-              <input type="text" placeholder="Insira o id" id="input-id" data-input="id"/>
+              <input type="text" placeholder="Insira o id" id="input-id" />
               <h6>Link da imagem de exibição:</h6>
               <input
                 type="text"
                 placeholder=" Link da imagem do curso"
                 id="input-img"
-                data-input="img"
               />
               <img src="" alt="preview" class="imgPreview" />
               <div>
@@ -58,7 +56,30 @@
                   CANCELAR
                 </button>
               </div>
-
+            </div>
+            <div class="modal-editar">
+              <h4>Digite abaixo as alterações desejadas:</h4>
+              <h6>Curso:</h6>
+              <input type="text" placeholder="Nome do curso" data-input-nome />
+              <h6>Descrição:</h6>
+              <input
+                type="text"
+                placeholder="Conteúdo, duração, etc"
+                data-input-descricao
+              />
+              <h6>ID do serviço:</h6>
+              <input type="number" data-input-id />
+              <h6>Link da imagem de exibição:</h6>
+              <input
+                type="text"
+                placeholder=" Link da imagem do curso"
+                data-input-img
+              />
+              <img src="" alt="preview" class="imgPreview" data-img-preview />
+              <div class="btns-editar">
+                <button class="btn btn-primary" data-adc-servico>Salvar</button>
+                <button class="btn btn-cancel">CANCELAR</button>
+              </div>
             </div>
             <table class="table my-5">
               <thead>
@@ -127,6 +148,6 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
-    <script src="scripts/main.js"></script>    
+    <script src="scripts/main.js"></script>
   </body>
 </html>
