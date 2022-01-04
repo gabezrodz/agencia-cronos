@@ -58,36 +58,61 @@
               </div>
             </div>
 
-            <div class="modal-editar">
-              <h4>Digite abaixo as alterações desejadas:</h4>
-              <h6>Curso:</h6>
-              <input type="text" placeholder="Nome do curso" data-edit-nome />
-              <h6>Descrição:</h6>
-              <input
-                type="text"
-                placeholder="Conteúdo, duração, etc"
-                data-edit-descricao
-              />
-              <h6>ID do serviço:</h6>
-              <input type="number" data-edit-id />
-              <h6>Link da imagem de exibição:</h6>
-              <input
-                type="text"
-                placeholder=" Link da imagem do curso"
-                data-edit-img
-              />
-              <img src="" alt="preview" class="imgPreview" data-img-preview />
-              <div class="btns-editar">
-                <button class="btn btn-primary" data-adc-servico>Salvar</button>
-                <button class="btn btn-cancel">CANCELAR</button>
-              </div>
-            
+            <div class="modal-editar hidden">
+              <section class="modal-conteudo modals">
+                <i class="far fa-window-close x-add " onclick="modalEditar()"></i>
+                <div>
+                  <h4>Digite abaixo as alterações desejadas:</h4>
+                </div>
+                <div>
+                  <h6>Curso:</h6>
+                  <input
+                    type="text"
+                    placeholder="Nome do curso"
+                    data-edit-nome
+                  />
+                </div>
+                <div>
+                  <h6>Descrição:</h6>
+                  <input
+                    type="text"
+                    placeholder="Conteúdo, duração, etc"
+                    data-edit-descricao
+                  />
+                </div>
+                <div>
+                  <h6>ID do serviço:</h6>
+                  <input type="number" data-edit-id />
+                </div>
+                <div>
+                  <h6>Link da imagem de exibição:</h6>
+                  <input
+                    type="text"
+                    placeholder=" Link da imagem do curso"
+                    data-edit-img
+                  />
+                  <img
+                    src=""
+                    alt="preview"
+                    class="imgPreview"
+                    data-img-preview
+                  />
+                </div>
+
+                <div class="btns-editar">
+                  <button class="btn btn-primary" data-adc-servico>
+                    Salvar
+                  </button>
+                  <button class="btn btn-cancel" onclick="modalEditar()" >CANCELAR</button>
+                </div>
+              </section>
             </div>
 
             <table class="table my-5">
               <thead>
                 <tr>
                   <td>Nome</td>
+                  <td>ID</td>
                   <td>Imagem</td>
                   <td>Descrição</td>
                   <td>Ações</td>
@@ -151,6 +176,10 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <script
+        src="https://kit.fontawesome.com/962c7401d0.js"
+        crossorigin="anonymous"
+      ></script>
     <script src="scripts/main.js"></script>
   </body>
 </html>

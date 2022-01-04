@@ -33,6 +33,7 @@ function listarServico() {
     
     <tr>
     <td>${servicos[i].nome}</td>
+    <td>${servicos[i].id}</td>
     <td><img src=${servicos[i].img} class="img-fluid" /></td>
     <td>${servicos[i].descricao}</td>
     <td>
@@ -82,6 +83,7 @@ function editarServico(id) {
       document.querySelector('[data-edit-img]').value = servicos[i].img;
     }
   }
+  modalEditar()
 }
 
 function salvarEdicao() {
@@ -102,5 +104,16 @@ function salvarEdicao() {
     }
   }
 }
+
+
+//modals editar
+let modalEdit = document.querySelector('.modal-editar')
+let overlay = document.querySelector('.overlay')
+
+const modalEditar = function(){
+  modalEdit.classList.toggle('hidden')
+  overlay.classList.toggle('hidden')
+}
+
 
 document.querySelector('[data-adc-servico]').addEventListener('click', salvarEdicao);
