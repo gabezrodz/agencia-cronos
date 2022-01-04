@@ -58,25 +58,76 @@ const adicionarServico = function () {
   let novoServicoId = document.getElementById("input-id");
   let novoServicoImg = document.getElementById("input-img");
 
-  servicos.push({
-    nome: novoServicoCadastrado.value,
-    descricao: novoServicoDescricao.value,
-    id: novoServicoId.value,
-    img: novoServicoImg.value,
-  });
-
-  listarServico();
+  if (
+    novoServicoCadastrado.value !== "" &&
+    novoServicoDescricao.value !== "" &&
+    novoServicoId.value !== "" &&
+    novoServicoImg.value !== ""
+  ) {
+    for (let i = 0; i < servicos.length; i++) {
+      if (servicos[i].id == novoServicoId.value) {
+        return alert("Esse ID de serviço já existe");
+      }
+    }
+    if (novoServicoId.value > 0) {
+      servicos.push({
+        nome: novoServicoCadastrado.value,
+        descricao: novoServicoDescricao.value,
+        id: novoServicoId.value,
+        img: novoServicoImg.value,
+      });
+      resetaInput();
+      listarServico();
+    } else alert("insira um valor acima de '0' para o ID");
+  } else alert("Campos vazios!");
 };
 
 btnAdicaoDeServico.addEventListener("click", adicionarServico);
 
 listarServico();
 
+// Mostrar modal
+
+let btnAdcNovoServico = document.querySelector("#btn-exibir");
+
+function adcNovoServico() {
+  document.querySelector(".novo-servico").style.display = "block";
+}
+
+btnAdcNovoServico.addEventListener("click", adcNovoServico);
+
+// Fechar modal
+
+let btnCancelarNovoServico = document.querySelector(
+  '[data-serviço="cancelar-servico"]'
+);
+
+function CancelarNovoServico() {
+  document.querySelector(".novo-servico").style.display = "none";
+  resetaInput();
+}
+
+btnCancelarNovoServico.addEventListener("click", CancelarNovoServico);
+
+// Função de resetar Inputs
+
+function resetaInput() {
+  let inputNome = document.querySelector("#input-nome");
+  let inputDescricao = document.querySelector("#input-descricao");
+  let inputId = document.querySelector("#input-id");
+  let inputImg = document.querySelector("#input-img");
+
+  inputNome.value = "";
+  inputDescricao.value = "";
+  inputId.value = "";
+  inputImg.value = "";
+}
+
 // Editando os serviços existentes
 
 function editarServico(id) {
   for (let i = 0; i < servicos.length; i++) {
-    if (servicos[i].id === id) {
+    if (servicos[i].id == id) {
       document.querySelector("[data-edit-nome]").value = servicos[i].nome;
       document.querySelector("[data-edit-descricao]").value =
         servicos[i].descricao;
@@ -118,8 +169,6 @@ const modalEditar = function () {
 document
   .querySelector("[data-adc-servico]")
   .addEventListener("click", salvarEdicao);
-
-
 
 const inputImg = document.querySelector("[data-edit-img]");
 let imgPreview = document.querySelector('[data-img="edit-preview"]');
