@@ -108,17 +108,12 @@ table img {
   width: 30%;
 }
 
-.imgPreview {
-  width: 90%;
-  border: 2px rgba(0, 0, 0, 0.5) solid;
-  margin-top: 5px;
-  padding: 2px;
-}
+
 
 .modals {
   width: 55%;
 
-  position: absolute;
+  position: fixed;
 
   top: 50%;
   left: 50%;
@@ -140,6 +135,9 @@ table img {
 
 }
 
+
+
+
 .x-add{
   position: absolute;
   top: 5%;
@@ -155,8 +153,10 @@ table img {
 
 
 .imgPreview {
-  max-width: 30%;
-  border: 1px black solid;
+  width: 90%;
+  border: 2px rgba(0, 0, 0, 0.5) solid;
+  margin-top: 5px;
+  padding: 2px;
 }
 
 .modal-delete {
@@ -200,9 +200,11 @@ table img {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.411);
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(2px);
   z-index: 5;
 }
+
+
 
 .modal-delete input {
   max-width: 40%;
