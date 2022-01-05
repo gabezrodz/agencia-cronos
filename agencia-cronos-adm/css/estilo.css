@@ -43,7 +43,7 @@ h3 {
   margin: 30px 0;
 }
 
-span{
+span {
   color: #dc3545;
 }
 
@@ -79,27 +79,7 @@ table img {
   border: 1px solid #ccc;
 }
 
-.novo-servico {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-}
-
-.novo-servico input {
-  padding: 5px;
-  margin: 10px 0px;
-  max-width: 90%;
-  border: solid 2px rgba(0, 0, 0, 0.555);
-  border-radius: 5px;
-}
-.novo-servico div {
-  max-width: 90%;
-  
-}
-
-.novo-servico div button {
-  width: 30%;
-}
+/* Estilo interno e externo dos modais */
 .modal-conteudo {
   display: flex;
   flex-wrap: wrap;
@@ -110,7 +90,6 @@ table img {
   text-align: initial;
 }
 
-
 .modal-conteudo div {
   width: 100%;
   margin-left: 25px;
@@ -120,13 +99,9 @@ table img {
   width: 30%;
 }
 
-
-
 .modals {
   width: 55%;
-
   position: absolute;
-
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -144,16 +119,35 @@ table img {
   width: 90%;
   border: solid 2px rgba(0, 0, 0, 0.555);
   border-radius: 5px;
-
-}
-.modal-editar{
-  position:fixed;
-  z-index: 10
 }
 
+/* Modal Adicionar novo servico */
+.novo-servico {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
 
+.novo-servico input {
+  padding: 5px;
+  margin: 10px 0px;
+  width: 90%;
+  border: solid 2px rgba(0, 0, 0, 0.555);
+  border-radius: 5px;
+}
 
-.x-add{
+.novo-servico div {
+  max-width: 90%;
+}
+
+.imgPreview {
+  width: 90%;
+  border: 2px rgba(0, 0, 0, 0.5) solid;
+  margin-top: 5px;
+  padding: 2px;
+}
+
+.x-add {
   position: absolute;
   top: 5%;
   left: 90%;
@@ -166,16 +160,17 @@ table img {
   color: rgba(255, 0, 0, 0.705);
 }
 
-
-.imgPreview {
-  width: 90%;
-  border: 2px rgba(0, 0, 0, 0.5) solid;
-  margin-top: 5px;
-  padding: 2px;
+.novo-servico div button {
+  width: 30%;
 }
 
-div .btns-Modal-editar{
+/* Modal editar */
+.modal-editar {
+  position: fixed;
+  z-index: 10;
+}
 
+div .btns-Modal-editar {
   margin-left: 95px;
 }
 
@@ -186,12 +181,12 @@ div .btns-Modal-editar{
   padding: 2px;
 }
 
-.texto-h4-editar{
+.texto-h4-editar {
   text-align: center;
   margin-left: -25px;
 }
 
-
+/* Modal Deletar */
 .modal-delete {
   width: 50%;
   position: absolute;
@@ -208,27 +203,19 @@ div .btns-Modal-editar{
   display: flex;
   text-align: center;
   justify-content: center;
-  flex-direction: column
+  flex-direction: column;
 }
 
-.input-delete{
+.modal-delete input {
+  max-width: 40%;
+}
+
+.input-delete {
   border: 2px solid black;
   border-radius: 5px;
- }
- .x-delete{
-   position: absolute;
-   top: 5%;
-   left: 90%;
-   font-size: 25px;
-   color: rgba(0, 0, 0, 0.5);
- }
- 
- .x-delete:hover {
-   cursor: pointer;
-   color: rgba(255, 0, 0, 0.705);
- }
+}
 
-/* .fa-window-close {
+.x-delete {
   position: absolute;
   top: 5%;
   left: 90%;
@@ -236,13 +223,14 @@ div .btns-Modal-editar{
   color: rgba(0, 0, 0, 0.5);
 }
 
-.fa-window-close:hover {
+.x-delete:hover {
   cursor: pointer;
   color: rgba(255, 0, 0, 0.705);
-} */
+}
 
+/* Estilo do overlay  demais estilizações*/
 .overlay {
-  position:fixed;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -250,14 +238,6 @@ div .btns-Modal-editar{
   background-color: rgba(0, 0, 0, 0.411);
   backdrop-filter: blur(2px);
   z-index: 5;
-}
-
-.btns-Modal-editar{
-  margin-left: 50px;
-}
-
-.modal-delete input {
-  max-width: 40%;
 }
 
 .hidden {
@@ -269,28 +249,33 @@ div .btns-Modal-editar{
   transition: 0.5s;
 }
 
+/* Responsividade */
 @media only screen and (max-width: 1024px) {
   .novo-servico div {
-    max-width: 50%;
+    max-width: 100%;
     margin: 0px 0px;
   }
 
+  .novo-servico input {
+    padding: 5px;
+    margin: 10px 0px;
+    width: 100%;
+    border: solid 2px rgba(0, 0, 0, 0.555);
+    border-radius: 5px;
+  }
   .novo-servico div button {
     width: 100%;
   }
 
   .modal-conteudo div {
     width: 100%;
-    ;
   }
   .modal-delete {
     height: 40%;
     width: 50%;
   }
 
-
-  div .btns-Modal-editar{
-
+  div .btns-Modal-editar {
     margin-left: 65px;
   }
   .imgEditPreview {
@@ -299,10 +284,7 @@ div .btns-Modal-editar{
     margin: 5px 90px 5px;
     padding: 2px;
   }
-  
 }
-
-
 
 @media only screen and (max-width: 768px) {
   .modal-delete {
@@ -310,12 +292,10 @@ div .btns-Modal-editar{
     width: 90%;
   }
   .modal-conteudo div button {
-    width: 45%;
-    
+    width: 49%;
   }
-  
-  div .btns-Modal-editar{
 
+  div .btns-Modal-editar {
     margin-left: 0px;
   }
   .imgEditPreview {
@@ -331,29 +311,3 @@ div .btns-Modal-editar{
   }
 }
 
-@media only screen and (max-width: 480px) {
-  .cel-width {
-    width: 110%;
-  }
-
-  .overlay {
-    height: 205%;
-    width: 125%;
-  }
-}
-
-@media only screen and (max-width: 380px) {
-  .cel-width {
-    width: 120%;
-  }
-}
-
-@media only screen and (max-width: 330px) {
-  .cel-width {
-    width: 150%;
-  }
-
-  .overlay {
-    width: 150%;
-  }
-}

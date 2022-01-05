@@ -1,7 +1,28 @@
-"use strict";
+//botões
+let btnAdicaoDeServico = document.querySelector('[data-serviço="adc-servico"]');
+let btnAdcNovoServico = document.querySelector("[data-btn-exibir]");
+let btnCancelarNovoServico = document.querySelector(
+  '[data-serviço="cancelar-servico"]'
+);
+
+//inputs
+let novoServicoCadastrado = document.querySelector("[data-input='nome']");
+let novoServicoDescricao = document.querySelector("[data-input='descricao']");
+let novoServicoId = document.querySelector("[data-input='id']");
+let novoServicoImg = document.querySelector("[data-input='img']");
+let inputImg = document.querySelector('[data-input="img"]');
+let inputEditImg = document.querySelector("[data-edit-img]");
+let inputDeletar = document.querySelector('[data-input="input-delete"]');
+
+//Seletores  diversos do DOM
+let modalDelete = document.querySelector("[data-modal-delete]");
+let modalText = document.querySelector('[data-texto="modal-delete"');
+let imgPreview = document.querySelector('[data-img="preview-img"]');
+let imgEditPreview = document.querySelector('[data-img="edit-preview"]');
+let modalEdit = document.querySelector("[data-modal-editar]");
+let overlay = document.querySelector("[data-overlay]");
 
 //objetos
-
 let servicos = [
   {
     nome: "Desenvolvimento Web",
@@ -23,41 +44,29 @@ let servicos = [
   },
 ];
 
-// Criar Serviço = R do CRUD
-
+// imprimir/listar Serviços
 function listarServico() {
   let imprimeServico = "";
-
   for (let i = 0; i < servicos.length; i++) {
     imprimeServico += `
-    
     <tr>
-    <td>${servicos[i].nome}</td>
-    <td>${servicos[i].id}</td>
-    <td><img src=${servicos[i].img} class="img-fluid" /></td>
-    <td>${servicos[i].descricao}</td>
-    <td>
-    <button class="btn btn-secondary m-1" onclick="editarServico(${servicos[i].id})">editar</button>
-    <button class="btn btn-danger m-1"  onclick=" modalDeletar(${servicos[i].id})">excluir</button>
-    </td>
+      <td>${servicos[i].nome}</td>
+      <td>${servicos[i].id}</td>
+      <td><img src=${servicos[i].img} class="img-fluid" /></td>
+      <td>${servicos[i].descricao}</td>
+      <td>
+        <button class="btn btn-secondary m-1" onclick="editarServico(${servicos[i].id})">editar</button>
+        <button class="btn btn-danger m-1"  onclick=" modalDeletar(${servicos[i].id})">excluir</button>
+      </td>
     </tr>
     `;
-    // console.log(`Temos o serviço de ${servicos[i].nome}`)
   }
-
   let insereInforamacao = document.querySelector("tbody");
   insereInforamacao.innerHTML = imprimeServico;
 }
 
 // Criando os Serviços
-let btnAdicaoDeServico = document.querySelector('[data-serviço="adc-servico"]');
-
 const adicionarServico = function () {
-  let novoServicoCadastrado = document.getElementById("input-nome");
-  let novoServicoDescricao = document.getElementById("input-descricao");
-  let novoServicoId = document.getElementById("input-id");
-  let novoServicoImg = document.getElementById("input-img");
-
   if (
     novoServicoCadastrado.value !== "" &&
     novoServicoDescricao.value !== "" &&
@@ -83,26 +92,11 @@ const adicionarServico = function () {
   } else alert("Campos vazios!");
 };
 
-btnAdicaoDeServico.addEventListener("click", adicionarServico);
-
-listarServico();
-
-// Mostrar modal
-
-let btnAdcNovoServico = document.querySelector("#btn-exibir");
-
+//modal Novo Serviço
 function adcNovoServico() {
   document.querySelector(".novo-servico").style.display = "flex";
   overlay.classList.toggle("hidden");
 }
-
-btnAdcNovoServico.addEventListener("click", adcNovoServico);
-
-// Fechar modal
-
-let btnCancelarNovoServico = document.querySelector(
-  '[data-serviço="cancelar-servico"]'
-);
 
 function cancelarNovoServico() {
   document.querySelector(".novo-servico").style.display = "none";
@@ -110,24 +104,15 @@ function cancelarNovoServico() {
   overlay.classList.toggle("hidden");
 }
 
-btnCancelarNovoServico.addEventListener("click", cancelarNovoServico);
-
-// Função de resetar Inputs
-
+// Função de resetar Inputs modal adicionar
 function resetaInput() {
-  let inputNome = document.querySelector("#input-nome");
-  let inputDescricao = document.querySelector("#input-descricao");
-  let inputId = document.querySelector("#input-id");
-  let inputImg = document.querySelector("#input-img");
-
-  inputNome.value = "";
-  inputDescricao.value = "";
-  inputId.value = "";
-  inputImg.value = "";
+  novoServicoCadastrado.value = "";
+  novoServicoDescricao.value = "";
+  novoServicoId.value = "";
+  novoServicoImg.value = "";
 }
 
 // Editando os serviços existentes
-
 function editarServico(id) {
   for (let i = 0; i < servicos.length; i++) {
     if (servicos[i].id == id) {
@@ -156,83 +141,55 @@ function salvarEdicao() {
         img: editIMG.value,
       };
       listarServico();
-      modalEditar()
+      modalEditar();
     }
   }
 }
 
 //modals editar
-let modalEdit = document.querySelector(".modal-editar");
-let overlay = document.querySelector(".overlay");
-
 const modalEditar = function () {
   modalEdit.classList.toggle("hidden");
   overlay.classList.toggle("hidden");
 };
-
 document
   .querySelector("[data-adc-servico]")
   .addEventListener("click", salvarEdicao);
 
+
 //preview
-const inputImg = document.querySelector('[data-input="input-img"]');
-let imgPreview = document.querySelector('[data-img="edit-img"]');
-
-const inputEditImg = document.querySelector("[data-edit-img]");
-let imgEditPreview = document.querySelector('[data-img="edit-preview"]');
-
 setInterval(function () {
   if (inputEditImg !== "") {
     imgEditPreview.src = inputEditImg.value;
-
   }
 }, 500);
 
 setInterval(function () {
   if (inputImg !== "") {
     imgPreview.src = inputImg.value;
-    removeHiddenPreview()
+    removeHiddenPreview();
   }
 }, 500);
 
-
-const removeHiddenPreview = function(){
-  if(imgPreview.src = inputImg.value){
-    imgPreview.classList.remove("hidden")
+const removeHiddenPreview = function () {
+  if ((imgPreview.src = inputImg.value)) {
+    imgPreview.classList.remove("hidden");
   } else {
-    imgPreview.classList.add("hidden")
+    imgPreview.classList.add("hidden");
   }
-}
-
-
+};
 
 //Funções de deletar
-
-
-const modalDelete = document.querySelector(".modal-delete");
-
-const inputDeletar = document.querySelector("#input-delete");
 const modalDeletar = (id) => {
-  //Alterando o texto do modal conforme id
-  const modalText = document.querySelector('[data-texto="modal-delete"');
   modalText.innerHTML = `Deseja realmente deletar o serviço de ID <span> ${id}</span>  ?`;
-
-  //atribuindo id vigente ao modal
-  const modalId = document.querySelector('[data-modal-delete="id"]');
-  modalId.id = id;
-
-  //classes para o hidden
+  modalDelete.id = id;
+  inputDeletar.value = "";
   modalDelete.classList.toggle("hidden");
   overlay.classList.toggle("hidden");
-
-  inputDeletar.value = "";
-
-}
+};
 
 const deletarServico = (id) => {
   for (let i = 0; i < servicos.length; i++) {
     if (servicos[i].id == id) {
-      
       servicos.splice(i, 1);
     }
   }
@@ -248,11 +205,16 @@ const deletarServicoModal = function () {
         inputDeletar.value = "";
         return;
       } else {
-        alert("Digite o ID correto para prosseguir!");
+        alert(`Digite o ID " ${servicos[i].id} " para prosseguir!`);
         inputDeletar.value = "";
         return;
       }
     }
   }
-}
+};
 
+//Eventlisteners e funções
+listarServico();
+btnAdicaoDeServico.addEventListener("click", adicionarServico);
+btnAdcNovoServico.addEventListener("click", adcNovoServico);
+btnCancelarNovoServico.addEventListener("click", cancelarNovoServico);
