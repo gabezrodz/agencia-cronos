@@ -38,7 +38,7 @@ function listarServico() {
     <td>${servicos[i].descricao}</td>
     <td>
     <button class="btn btn-secondary m-1" onclick="editarServico(${servicos[i].id})">editar</button>
-    <button class="btn btn-danger m-1">excluir</button>
+    <button class="btn btn-danger m-1"  onclick=" modalDeletar(${servicos[i].id})">excluir</button>
     </td>
     </tr>
     `;
@@ -78,6 +78,7 @@ const adicionarServico = function () {
       });
       resetaInput();
       listarServico();
+      cancelarNovoServico();
     } else alert("insira um valor acima de '0' para o ID");
   } else alert("Campos vazios!");
 };
@@ -91,7 +92,8 @@ listarServico();
 let btnAdcNovoServico = document.querySelector("#btn-exibir");
 
 function adcNovoServico() {
-  document.querySelector(".novo-servico").style.display = "block";
+  document.querySelector(".novo-servico").style.display = "flex";
+  overlay.classList.toggle("hidden");
 }
 
 btnAdcNovoServico.addEventListener("click", adcNovoServico);
@@ -102,12 +104,13 @@ let btnCancelarNovoServico = document.querySelector(
   '[data-serviço="cancelar-servico"]'
 );
 
-function CancelarNovoServico() {
+function cancelarNovoServico() {
   document.querySelector(".novo-servico").style.display = "none";
   resetaInput();
+  overlay.classList.toggle("hidden");
 }
 
-btnCancelarNovoServico.addEventListener("click", CancelarNovoServico);
+btnCancelarNovoServico.addEventListener("click", cancelarNovoServico);
 
 // Função de resetar Inputs
 
@@ -153,6 +156,7 @@ function salvarEdicao() {
         img: editIMG.value,
       };
       listarServico();
+      modalEditar()
     }
   }
 }
@@ -170,12 +174,85 @@ document
   .querySelector("[data-adc-servico]")
   .addEventListener("click", salvarEdicao);
 
-const inputImg = document.querySelector("[data-edit-img]");
-let imgPreview = document.querySelector('[data-img="edit-preview"]');
+//preview
+const inputImg = document.querySelector('[data-input="input-img"]');
+let imgPreview = document.querySelector('[data-img="edit-img"]');
+
+const inputEditImg = document.querySelector("[data-edit-img]");
+let imgEditPreview = document.querySelector('[data-img="edit-preview"]');
+
+setInterval(function () {
+  if (inputEditImg !== "") {
+    imgEditPreview.src = inputEditImg.value;
+
+  }
+}, 500);
 
 setInterval(function () {
   if (inputImg !== "") {
     imgPreview.src = inputImg.value;
-    //removeHiddenPrewview();
+    removeHiddenPreview()
   }
 }, 500);
+
+
+const removeHiddenPreview = function(){
+  if(imgPreview.src = inputImg.value){
+    imgPreview.classList.remove("hidden")
+  } else {
+    imgPreview.classList.add("hidden")
+  }
+}
+
+
+
+//Funções de deletar
+
+
+const modalDelete = document.querySelector(".modal-delete");
+
+const inputDeletar = document.querySelector("#input-delete");
+const modalDeletar = (id) => {
+  //Alterando o texto do modal conforme id
+  const modalText = document.querySelector('[data-texto="modal-delete"');
+  modalText.innerHTML = `Deseja realmente deletar o serviço de ID <span> ${id}</span>  ?`;
+
+  //atribuindo id vigente ao modal
+  const modalId = document.querySelector('[data-modal-delete="id"]');
+  modalId.id = id;
+
+  //classes para o hidden
+  modalDelete.classList.toggle("hidden");
+  overlay.classList.toggle("hidden");
+
+  inputDeletar.value = "";
+
+}
+
+const deletarServico = (id) => {
+  for (let i = 0; i < servicos.length; i++) {
+    if (servicos[i].id == id) {
+      
+      servicos.splice(i, 1);
+    }
+  }
+  modalDeletar();
+  listarServico();
+};
+
+const deletarServicoModal = function () {
+  for (let i = 0; i < servicos.length; i++) {
+    if (servicos[i].id == modalDelete.id) {
+      if (inputDeletar.value === modalDelete.id) {
+        deletarServico(servicos[i].id);
+        inputDeletar.value = "";
+        return;
+      } else {
+        alert("Digite o ID correto para prosseguir!");
+        inputDeletar.value = "";
+        return;
+      }
+    }
+  }
+}
+

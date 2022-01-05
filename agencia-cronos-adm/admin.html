@@ -33,32 +33,53 @@
               Adicionar novo
             </button>
             <div class="novo-servico hidden">
-              <div class="modal-adicionar modals">
-                <h6>Serviço:</h6>
-                <input
-                  type="text"
-                  placeholder="Nome do serviço"
-                  id="input-nome"
-                />
-                <h6>Descrição:</h6>
-                <input
-                  type="text"
-                  placeholder="Descrição do serviço"
-                  id="input-descricao"
-                />
-                <h6>ID:</h6>
-                <input
-                  type="number"
-                  placeholder="ID do serviço"
-                  id="input-id"
-                />
-                <h6>Link da imagem de exibição:</h6>
-                <input
-                  type="text"
-                  placeholder=" Link da imagem do curso"
-                  id="input-img"
-                />
-                <img src="" alt="preview" class="imgPreview" />
+              <div class="modal-conteudo modals">
+                <i
+                  class="far fa-window-close x-add"
+                  onclick="cancelarNovoServico()"
+                ></i>
+                <div>
+                  <h4>Insira abaixo as informações:</h4>
+                </div>
+                <div>
+                  <h6>Serviço:</h6>
+                  <input
+                    type="text"
+                    placeholder="Nome do serviço"
+                    id="input-nome"
+                  />
+                </div>
+                <div>
+                  <h6>Descrição:</h6>
+                  <input
+                    type="text"
+                    placeholder="Descrição do serviço"
+                    id="input-descricao"
+                  />
+                </div>
+                <div>
+                  <h6>ID:</h6>
+                  <input
+                    type="number"
+                    placeholder="ID do serviço"
+                    id="input-id"
+                  />
+                </div>
+                <div>
+                  <h6>Link da imagem de exibição:</h6>
+                  <input
+                    type="text"
+                    placeholder=" Link da imagem do curso"
+                    id="input-img"
+                    data-input="input-img"
+                  />
+                  <img
+                    src=""
+                    alt="preview"
+                    class="imgPreview"
+                    data-img="edit-img"
+                  />
+                </div>
                 <div>
                   <button class="btn btn-primary" data-serviço="adc-servico">
                     Adicionar
@@ -72,12 +93,14 @@
                 </div>
               </div>
             </div>
-
             <div class="modal-editar hidden">
-              <section class="modal-conteudo modals">
-                <i class="far fa-window-close x-add " onclick="modalEditar()"></i>
+              <section class="modal-conteudo modals modal-editar">
+                <i
+                  class="far fa-window-close x-add"
+                  onclick="modalEditar()"
+                ></i>
                 <div>
-                  <h4>Digite abaixo as alterações desejadas:</h4>
+                  <h4 class='texto-h4-editar'>Digite abaixo as alterações desejadas:</h4>
                 </div>
                 <div>
                   <h6>Curso:</h6>
@@ -109,20 +132,50 @@
                   <img
                     src=""
                     alt="preview"
-                    class="imgPreview"
+                    class="imgEditPreview"
                     data-img="edit-preview"
                   />
                 </div>
 
-                <div class="btns-editar">
-                  <button class="btn btn-primary" data-adc-servico>
-                    Salvar
-                  </button>
-                  <button class="btn btn-cancel" onclick="modalEditar()" >CANCELAR</button>
+                <div >
+                  <div class="btns-Modal-editar">
+                    <button class="btn btn-primary" data-adc-servico>
+                      Salvar
+                    </button>
+                    <button class="btn btn-cancel" onclick="modalEditar()">
+                      CANCELAR
+                    </button>
+                  </div>
                 </div>
               </section>
             </div>
-
+            <div class="modal-delete hidden" id="" data-modal-delete="id">
+              <i
+                class="far fa-window-close x-delete"
+                onclick="modalDeletar()"
+              ></i>
+              <h4 data-texto="modal-delete">
+                Deseja realmente excluir o serviço " " ?
+              </h4>
+              <p>Digite abaixo o ID do serviço para iniciar a exclusão:</p>
+              <div>
+                <input
+                  type="text"
+                  name="input-delete"
+                  id="input-delete"
+                  class="input-delete"
+                />
+              </div>
+              <div>
+                <button
+                  class="btn btn-primary btn-confirm"
+                  onclick="deletarServicoModal ()"
+                  data-btn="confirm"
+                >
+                  CONFIRMAR
+                </button>
+              </div>
+            </div>
             <table class="table my-5">
               <thead>
                 <tr>
@@ -172,7 +225,7 @@
       <div class="container text-center">
         <p class="m-0">
           copyright 2021
-          <!-- <img src="imagens/favicon.png" width="30" alt="" /> agência CRONOS -->
+          <img src="imagens/CRONOS-logo-black.png" alt="logo" class="logo-footer">
         </p>
       </div>
     </footer>
@@ -193,9 +246,9 @@
       crossorigin="anonymous"
     ></script>
     <script
-        src="https://kit.fontawesome.com/962c7401d0.js"
-        crossorigin="anonymous"
-      ></script>
+      src="https://kit.fontawesome.com/962c7401d0.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="scripts/main.js"></script>
   </body>
 </html>
