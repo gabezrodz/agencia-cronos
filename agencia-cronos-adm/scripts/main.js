@@ -1,9 +1,7 @@
 //botões
 let btnAdicaoDeServico = document.querySelector('[data-serviço="adc-servico"]');
-let btnAdcNovoServico = document.querySelector("[data-btn-exibir]");
-let btnCancelarNovoServico = document.querySelector(
-  '[data-serviço="cancelar-servico"]'
-);
+let btnAdcNovoServico = document.querySelector('[data-btn-exibir]');
+let btnCancelarNovoServico = document.querySelector('[data-serviço="cancelar-servico"]');
 
 //inputs
 let novoServicoCadastrado = document.querySelector("[data-input='nome']");
@@ -11,42 +9,42 @@ let novoServicoDescricao = document.querySelector("[data-input='descricao']");
 let novoServicoId = document.querySelector("[data-input='id']");
 let novoServicoImg = document.querySelector("[data-input='img']");
 let inputImg = document.querySelector('[data-input="img"]');
-let inputEditImg = document.querySelector("[data-edit-img]");
+let inputEditImg = document.querySelector('[data-edit-img]');
 let inputDeletar = document.querySelector('[data-input="input-delete"]');
 
 //Seletores  diversos do DOM
-let modalDelete = document.querySelector("[data-modal-delete]");
+let modalDelete = document.querySelector('[data-modal-delete]');
 let modalText = document.querySelector('[data-texto="modal-delete"');
 let imgPreview = document.querySelector('[data-img="preview-img"]');
 let imgEditPreview = document.querySelector('[data-img="edit-preview"]');
-let modalEdit = document.querySelector("[data-modal-editar]");
-let overlay = document.querySelector("[data-overlay]");
+let modalEdit = document.querySelector('[data-modal-editar]');
+let overlay = document.querySelector('[data-overlay]');
 
 //objetos
 let servicos = [
   {
-    nome: "Desenvolvimento Web",
-    descricao: "Cursinho de front-end",
+    nome: 'Desenvolvimento Web',
+    descricao: 'Cursinho de front-end',
     id: 1,
-    img: "imagens/ilustra-web.png",
+    img: 'imagens/ilustra-web.png',
   },
   {
-    nome: "Marketing Digital",
-    descricao: "Marketeiros de Kottler",
+    nome: 'Marketing Digital',
+    descricao: 'Marketeiros de Kottler',
     id: 2,
-    img: "imagens/ilustra-marketing.png",
+    img: 'imagens/ilustra-marketing.png',
   },
   {
-    nome: "Consultoria UX",
-    descricao: "Vamo arruma esse layout/desing feio aí?",
+    nome: 'Consultoria UX',
+    descricao: 'Vamo arruma esse layout/desing feio aí?',
     id: 3,
-    img: "imagens/ilustra-ux.png",
+    img: 'imagens/ilustra-ux.png',
   },
 ];
 
 // imprimir/listar Serviços
 function listarServico() {
-  let imprimeServico = "";
+  let imprimeServico = '';
   for (let i = 0; i < servicos.length; i++) {
     imprimeServico += `
     <tr>
@@ -61,21 +59,21 @@ function listarServico() {
     </tr>
     `;
   }
-  let insereInforamacao = document.querySelector("tbody");
+  let insereInforamacao = document.querySelector('tbody');
   insereInforamacao.innerHTML = imprimeServico;
 }
 
 // Criando os Serviços
 const adicionarServico = function () {
   if (
-    novoServicoCadastrado.value !== "" &&
-    novoServicoDescricao.value !== "" &&
-    novoServicoId.value !== "" &&
-    novoServicoImg.value !== ""
+    novoServicoCadastrado.value !== '' &&
+    novoServicoDescricao.value !== '' &&
+    novoServicoId.value !== '' &&
+    novoServicoImg.value !== ''
   ) {
     for (let i = 0; i < servicos.length; i++) {
       if (servicos[i].id == novoServicoId.value) {
-        return alert("Esse ID de serviço já existe");
+        return alert('Esse ID de serviço já existe');
       }
     }
     if (novoServicoId.value > 0) {
@@ -89,51 +87,54 @@ const adicionarServico = function () {
       listarServico();
       cancelarNovoServico();
     } else alert("insira um valor acima de '0' para o ID");
-  } else alert("Campos vazios!");
+  } else alert('Campos vazios!');
 };
 
 //modal Novo Serviço
 function adcNovoServico() {
-  document.querySelector(".novo-servico").style.display = "flex";
-  overlay.classList.toggle("hidden");
+  document.querySelector('.novo-servico').style.display = 'flex';
+  overlay.classList.toggle('hidden');
 }
 
 function cancelarNovoServico() {
-  document.querySelector(".novo-servico").style.display = "none";
+  document.querySelector('.novo-servico').style.display = 'none';
   resetaInput();
-  overlay.classList.toggle("hidden");
+  overlay.classList.toggle('hidden');
 }
 
 // Função de resetar Inputs modal adicionar
 function resetaInput() {
-  novoServicoCadastrado.value = "";
-  novoServicoDescricao.value = "";
-  novoServicoId.value = "";
-  novoServicoImg.value = "";
+  novoServicoCadastrado.value = '';
+  novoServicoDescricao.value = '';
+  novoServicoId.value = '';
+  novoServicoImg.value = '';
 }
 
 // Editando os serviços existentes
+let identificacao = 0
+
 function editarServico(id) {
   for (let i = 0; i < servicos.length; i++) {
     if (servicos[i].id == id) {
-      document.querySelector("[data-edit-nome]").value = servicos[i].nome;
-      document.querySelector("[data-edit-descricao]").value =
-        servicos[i].descricao;
-      document.querySelector("[data-edit-id]").value = servicos[i].id;
-      document.querySelector("[data-edit-img]").value = servicos[i].img;
+      document.querySelector('[data-edit-nome]').value = servicos[i].nome;
+      document.querySelector('[data-edit-descricao]').value = servicos[i].descricao;
+      document.querySelector('[data-edit-id]').value = servicos[i].id;
+      identificacao = servicos[i].id;
+      document.querySelector('[data-edit-img]').value = servicos[i].img;
     }
   }
   modalEditar();
 }
 
+
 function salvarEdicao() {
-  let editNome = document.querySelector("[data-edit-nome]");
-  let editDescricao = document.querySelector("[data-edit-descricao]");
-  let editId = document.querySelector("[data-edit-id]");
-  let editIMG = document.querySelector("[data-edit-img]");
+  let editNome = document.querySelector('[data-edit-nome]');
+  let editDescricao = document.querySelector('[data-edit-descricao]');
+  let editId = document.querySelector('[data-edit-id]');
+  let editIMG = document.querySelector('[data-edit-img]');
 
   for (let i = 0; i < servicos.length; i++) {
-    if (editId.value == servicos[i].id) {
+    if (identificacao == servicos[i].id) {
       servicos[i] = {
         nome: editNome.value,
         descricao: editDescricao.value,
@@ -148,23 +149,20 @@ function salvarEdicao() {
 
 //modals editar
 const modalEditar = function () {
-  modalEdit.classList.toggle("hidden");
-  overlay.classList.toggle("hidden");
+  modalEdit.classList.toggle('hidden');
+  overlay.classList.toggle('hidden');
 };
-document
-  .querySelector("[data-adc-servico]")
-  .addEventListener("click", salvarEdicao);
-
+document.querySelector('[data-adc-servico]').addEventListener('click', salvarEdicao);
 
 //preview
 setInterval(function () {
-  if (inputEditImg !== "") {
+  if (inputEditImg !== '') {
     imgEditPreview.src = inputEditImg.value;
   }
 }, 500);
 
 setInterval(function () {
-  if (inputImg !== "") {
+  if (inputImg !== '') {
     imgPreview.src = inputImg.value;
     removeHiddenPreview();
   }
@@ -172,9 +170,9 @@ setInterval(function () {
 
 const removeHiddenPreview = function () {
   if ((imgPreview.src = inputImg.value)) {
-    imgPreview.classList.remove("hidden");
+    imgPreview.classList.remove('hidden');
   } else {
-    imgPreview.classList.add("hidden");
+    imgPreview.classList.add('hidden');
   }
 };
 
@@ -182,9 +180,9 @@ const removeHiddenPreview = function () {
 const modalDeletar = (id) => {
   modalText.innerHTML = `Deseja realmente deletar o serviço de ID <span> ${id}</span>  ?`;
   modalDelete.id = id;
-  inputDeletar.value = "";
-  modalDelete.classList.toggle("hidden");
-  overlay.classList.toggle("hidden");
+  inputDeletar.value = '';
+  modalDelete.classList.toggle('hidden');
+  overlay.classList.toggle('hidden');
 };
 
 const deletarServico = (id) => {
@@ -202,11 +200,11 @@ const deletarServicoModal = function () {
     if (servicos[i].id == modalDelete.id) {
       if (inputDeletar.value === modalDelete.id) {
         deletarServico(servicos[i].id);
-        inputDeletar.value = "";
+        inputDeletar.value = '';
         return;
       } else {
         alert(`Digite o ID " ${servicos[i].id} " para prosseguir!`);
-        inputDeletar.value = "";
+        inputDeletar.value = '';
         return;
       }
     }
@@ -215,6 +213,6 @@ const deletarServicoModal = function () {
 
 //Eventlisteners e funções
 listarServico();
-btnAdicaoDeServico.addEventListener("click", adicionarServico);
-btnAdcNovoServico.addEventListener("click", adcNovoServico);
-btnCancelarNovoServico.addEventListener("click", cancelarNovoServico);
+btnAdicaoDeServico.addEventListener('click', adicionarServico);
+btnAdcNovoServico.addEventListener('click', adcNovoServico);
+btnCancelarNovoServico.addEventListener('click', cancelarNovoServico);
