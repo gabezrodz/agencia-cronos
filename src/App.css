@@ -14,7 +14,7 @@ header img {
 
 header {
   position: relative;
-  background-color: #0097A7;
+  background-color: #0097a7;
   text-align: center;
   box-shadow: 0px 4px 4px 2px rgb(0 0 0 / 14%);
 }
@@ -35,8 +35,7 @@ h2,
 h3,
 h4 {
   text-transform: uppercase;
-  color: #0097A7;
-
+  color: #0097a7;
 }
 
 h3 {
@@ -44,14 +43,271 @@ h3 {
   margin: 30px 0;
 }
 
+span {
+  color: #dc3545;
+}
+
+footer {
+  position: relative;
+}
+
+.logo-footer {
+  width: 10%;
+}
+
 .btn.btn-primary {
-  background-color: #0097A7;
-  border-color: #0097A7;
+  background-color: #0097a7;
+  border-color: #0097a7;
   text-transform: uppercase;
   margin: 10px 0;
+}
+
+.btn-cancel {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-cancel:hover {
+  color: #fff;
+  background-color: #bd2130;
+  border-color: #b21f2d;
 }
 
 table img {
   width: 220px;
   border: 1px solid #ccc;
 }
+
+/* Estilo interno e externo dos modais */
+.modal-conteudo {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+.modal-conteudo h6 {
+  text-align: initial;
+}
+
+.modal-conteudo div {
+  width: 100%;
+  margin-left: 25px;
+}
+
+.modal-conteudo div button {
+  width: 30%;
+}
+
+.modals {
+  width: 55%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+
+  background-color: #fff;
+  border: 1px solid;
+  padding: 65px;
+  box-shadow: 0px 15px 20px;
+}
+
+.modals input {
+  padding: 5px;
+  margin: 10px 0px;
+  width: 90%;
+  border: solid 2px rgba(0, 0, 0, 0.555);
+  border-radius: 5px;
+}
+
+/* Modal Adicionar novo servico */
+.novo-servico {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.novo-servico input {
+  padding: 5px;
+  margin: 10px 0px;
+  width: 90%;
+  border: solid 2px rgba(0, 0, 0, 0.555);
+  border-radius: 5px;
+}
+
+.novo-servico div {
+  max-width: 90%;
+}
+
+.imgPreview {
+  width: 90%;
+  border: 2px rgba(0, 0, 0, 0.5) solid;
+  margin-top: 5px;
+  padding: 2px;
+}
+
+.x-add {
+  position: absolute;
+  top: 5%;
+  left: 90%;
+  font-size: 25px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.x-add:hover {
+  cursor: pointer;
+  color: rgba(255, 0, 0, 0.705);
+}
+
+.novo-servico div button {
+  width: 30%;
+}
+
+/* Modal editar */
+.modal-editar {
+  position: fixed;
+  z-index: 10;
+}
+
+div .btns-Modal-editar {
+  margin-left: 95px;
+}
+
+.imgEditPreview {
+  width: 35%;
+  border: 2px rgba(0, 0, 0, 0.5) solid;
+  margin: 5px 182px 5px;
+  padding: 2px;
+}
+
+.texto-h4-editar {
+  text-align: center;
+  margin-left: -25px;
+}
+
+/* Modal Deletar */
+.modal-delete {
+  width: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+
+  background-color: #fff;
+  border: 1px solid;
+  padding: 65px;
+  box-shadow: 0px 15px 20px;
+
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.modal-delete input {
+  max-width: 40%;
+}
+
+.input-delete {
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.x-delete {
+  position: absolute;
+  top: 5%;
+  left: 90%;
+  font-size: 25px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.x-delete:hover {
+  cursor: pointer;
+  color: rgba(255, 0, 0, 0.705);
+}
+
+/* Estilo do overlay  demais estilizações*/
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.411);
+  backdrop-filter: blur(2px);
+  z-index: 5;
+}
+
+.hidden {
+  display: none;
+}
+
+.fadeOut {
+  opacity: 0;
+  transition: 0.5s;
+}
+
+/* Responsividade */
+@media only screen and (max-width: 1024px) {
+  .novo-servico div {
+    max-width: 100%;
+    margin: 0px 0px;
+  }
+
+  .novo-servico input {
+    padding: 5px;
+    margin: 10px 0px;
+    width: 100%;
+    border: solid 2px rgba(0, 0, 0, 0.555);
+    border-radius: 5px;
+  }
+  .novo-servico div button {
+    width: 100%;
+  }
+
+  .modal-conteudo div {
+    width: 100%;
+  }
+  .modal-delete {
+    height: 40%;
+    width: 50%;
+  }
+
+  div .btns-Modal-editar {
+    margin-left: 65px;
+  }
+  .imgEditPreview {
+    width: 50%;
+    border: 2px rgba(0, 0, 0, 0.5) solid;
+    margin: 5px 90px 5px;
+    padding: 2px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .modal-delete {
+    height: 40%;
+    width: 90%;
+  }
+  .modal-conteudo div button {
+    width: 49%;
+  }
+
+  div .btns-Modal-editar {
+    margin-left: 0px;
+  }
+  .imgEditPreview {
+    width: 65%;
+    border: 2px rgba(0, 0, 0, 0.5) solid;
+    margin: 5px 40px 5px;
+    padding: 2px;
+  }
+
+  .overlay {
+    height: 175%;
+    width: 100%;
+  }
+}
+
