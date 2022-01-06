@@ -1,7 +1,7 @@
 # Agência Cronos
 
 <h2>Bem vindos ao site da Agência Cronos, site para cadastramento de cursos com eficiência e fluideza. Para acessar o site, <a target="_blank"></a> </h2> 
-<img src="./public/imagens/principal.png" width="800px">
+<img src="public/imagens/principal.PNG" width="800px">
 
 ## 📋 Um breve resumo do projeto:
 
@@ -39,11 +39,14 @@ O site opera nas seguintes dimensões de telas:
 - [x] Botão com funcionalidade de editar para recuperação dos dados salvos para alteração e salvamento,
 - [x] Botão com a funcionalidade de chamamento de modal com exclusão e barreira de segurança por meio de input do id do item.
 
-<img src="./public/imagens/adicionar.png" width="450px">
-<img src="./public/imagens/listacursos.png" width="450px">
-<img src="./public/imagens/editar.png" width="450px">
-<img src="./public/imagens/excluir.png" width="450px">
-
+<table>
+  <tr>
+    <td><img src="public/imagens/adicionar.PNG" width="500px"></td>
+    <td><img src="public/imagens/listacursos.PNG" width="500px"></td>
+    <td><img src="public/imagens/editar.PNG" width="500px"></td>
+    <td><img src="public/imagens/excluir.PNG" width="500px"></td>
+  </tr>
+</table>
 ## 🤝 Colaboradores:
 
 <table>
