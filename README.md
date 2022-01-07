@@ -1,6 +1,6 @@
 # Agência Cronos
 
-<h2>Bem vindos ao site da Agência Cronos, site para cadastramento de cursos com eficiência e fluideza. Para acessar o site, <a target="_blank"></a> </h2> 
+<h2>Bem vindos ao site da Agência Cronos, site para cadastramento de cursos com eficiência e fluidez. <a target="_blank"></a> </h2> 
 <img src="public/imagens/principal.PNG" width="800px">
 
 ## 📋 Um breve resumo do projeto:
