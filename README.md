@@ -47,6 +47,7 @@ O site opera nas seguintes dimensões de telas:
     <td><img src="public/imagens/excluir.PNG" width="500px"></td>
   </tr>
 </table>
+
 ## 🤝 Colaboradores:
 
 <table>
